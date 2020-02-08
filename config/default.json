@@ -1,0 +1,34 @@
+{
+  "host": "localhost",
+  "port": 33333,
+  "public": "../public/",
+  "allowAccountCreation": false,
+  "paginate": {
+    "default": 100,
+    "max": 200
+  },
+  "authentication": {
+    "entity": "user",
+    "service": "users",
+    "secret": "MY_DEV_SECRET",
+    "authStrategies": [
+      "jwt",
+      "local"
+    ],
+    "jwtOptions": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "90d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    }
+  },
+  "nedb": "../data"
+}
