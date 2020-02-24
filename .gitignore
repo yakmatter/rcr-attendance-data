@@ -108,3 +108,5 @@ deploy.sh
 package-lock.json
 
 config/production.json
+
+**/*.db
