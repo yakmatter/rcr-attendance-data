@@ -2,16 +2,11 @@ const moment = require('moment');
 
 
 const isToday = (event) => {
+  const now = moment.utc().utcOffset(event.startTime);
+
   return (
-    /*
-      @todo
-      the server is in GMT, so moment endOf does not play nicely
-      i probably need to store times in a different manner
-     */
-    moment(event.startTime).isSameOrBefore(moment().add(48, 'hours')) &&
-    moment(event.startTime).isSameOrAfter(moment().subtract(48, 'hours'))
-    // moment(event.startTime).isSameOrBefore(now.endOf('day')) &&
-    // moment(event.startTime).isSameOrAfter(now.startOf('day'))
+    moment(event.startTime).isSameOrBefore(now.endOf('day')) &&
+    moment(event.startTime).isSameOrAfter(now.startOf('day'))
   );
 };
 
